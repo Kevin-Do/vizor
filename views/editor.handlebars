@@ -259,43 +259,43 @@
 		boot.graphUrl = boot.graph.url
 	{{/if}}
 
-	function startEditor(vr_devices) {
-		E2.InitialiseEngi(vr_devices, boot.graphUrl)
-	}
-
-	function EnumerateVRDevices(devices) {
-		var d = hardware.enumerateVRDevices(devices);
-		startEditor([d.hmd, d.sensor]);
+	function startEditor(hmd) {
+		E2.InitialiseEngi([hmd], boot.graphUrl)
 	}
 
 	$(document).ready(function() {
-
 		E2.models = {
 			user: new User({}),
 			graph: new Graph({}),
 			fileList: new FileList({})
 		}
 
-		if ('{{user.username}}' !== '') {
-			E2.models.user.set( {
+		{{#if user.username}}
+			E2.models.user.set({
 				id: '{{user._id}}',
 				name: '{{user.name}}',
 				username: '{{user.username}}',
+				email: '{{user.email}}',
+				avatar: '{{user.avatar}}',
 				gravatar: '{{{user.gravatar}}}',
-				email: '{{user.email}}'
+				stats: {
+					views: {{user.stats.views}},
+					projects: {{user.stats.projects}}
+				}
 			})
 
-			mixpanel.identify('{{user._id}}')
-		}
+			mixpanel.identify('{{user.username}}')
+		{{/if}}
 
 		if (typeof E2.controllers === 'undefined')
 			E2.controllers = {}
 
 		E2.controllers.account = new AccountController()
 
-		if (!hardware.ifVR(EnumerateVRDevices)) {
-			startEditor([null, null])
-		}
+		hardware.getVRDisplays()
+		.then(function(hmd) {
+			startEditor(hmd)
+		})
 
 	});
 </script>

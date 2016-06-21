@@ -47,6 +47,8 @@ var paths = {
 			'./browser/scripts/worldEditor/worldEditorOriginGrid.js',
 			'./browser/scripts/worldEditor/worldEditorRadialHelper.js',
 
+			'./browser/scripts/worldEditor/objectPlacementHelper.js',
+
 			'./browser/scripts/screenshot/ScreenshotRenderer.js',
 
 			'./browser/scripts/loaders/loader.js',
@@ -73,11 +75,20 @@ var paths = {
 			'./browser/vendor/three/MorphAnimMesh.js',
 			'./browser/vendor/three/Font.js',
 			'./browser/vendor/three/FontLoader.js',
-		
+			'./browser/vendor/three/loaders/FBXLoader.js',
+			'./browser/vendor/three/loaders/ColladaLoader2.js',
+			'./browser/vendor/three/loaders/gltf/glTF-parser.js',
+			'./browser/vendor/three/loaders/gltf/glTFAnimation.js',
+			'./browser/vendor/three/loaders/gltf/glTFLoader.js',
+			'./browser/vendor/three/loaders/gltf/glTFLoaderUtils.js',
+			'./browser/vendor/three/loaders/gltf/glTFShaders.js',
+			'./browser/vendor/three/loaders/gltf/glTFUtilities.js',
+
 			'./browser/vendor/spite/THREE.MeshLine.js',
 
 			'./browser/vendor/borismus/webvr-polyfill.js',
 			'./browser/vendor/borismus/webvr-manager.js',
+			'./browser/scripts/glTFUtils.js',
 			'./browser/scripts/hardware.js',
 			'./browser/scripts/webVRAdapter.js',
 
